@@ -7,7 +7,7 @@ class Content extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contenido 1'),
+        title: const Text('Nivel de Conciencia'),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tce/info.dart';
 import 'package:tce/content/content.dart';
+import 'package:tce/info.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,11 +17,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TCE',
+      title: 'Evaluación Neurológica',
       home: const Home(),
       theme: ThemeData(
         useMaterial3: false,
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blueGrey,
         // colorScheme: const ColorScheme.dark(),
       ),
     );
@@ -35,45 +35,22 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contenido'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/test.jpg'),
-                        fit: BoxFit.cover)),
-                child: null),
-            const ListTile(
-              leading: Icon(Icons.menu_book),
-              title: Text('Contenido'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.fact_check),
-              title: Text('Evaluar'),
-            ),
-            const Divider(),
-            ListTile(
-              leading: const Icon(Icons.info),
-              title: const Text('Información'),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Info(),
-                ),
+        title: const Text('Evaluación Neurológica'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Info(),
               ),
             ),
-          ],
-        ),
+            icon: const Icon(Icons.info),
+          ),
+        ],
       ),
       body: GridView.count(
         physics: const BouncingScrollPhysics(),
         crossAxisCount: 2,
-        mainAxisSpacing: 3.0,
-        crossAxisSpacing: 3.0,
         children: <Widget>[
           customCard(
             'assets/images/consc.JPG',
@@ -88,7 +65,7 @@ class Home extends StatelessWidget {
             const Content(),
           ),
           customCard(
-            'assets/images/test.jpg',
+            'assets/images/signs.JPG',
             'Signos irritativos',
             context,
             const Content(),
@@ -144,7 +121,8 @@ Widget customCard(imgPath, title, context, route) {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(imgPath),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
+              filterQuality: FilterQuality.none,
             ),
             borderRadius: const BorderRadius.all(
               Radius.circular(5),
